@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susheel Kumar | AI Engineer</title>
+    <meta name="description" content="Portfolio of Susheel Kumar - Computer Science student specializing in Artificial Intelligence, Data Analytics, and Modern Web Applications.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #06b6d4;
+            --accent-dark: #0891b2;
+            --dark: #0f172a;
+            --darker: #020617;
+        }
+        
+        * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+        code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        body {
+            background: #fafafa;
+            overflow-x: hidden;
+        }
+        
+        /* ===== PROFESSIONAL GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 100% 100%;
+        }
+        
+        /* ===== ELEGANT INTRO SCREEN ===== */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        #intro-screen.hidden-intro {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+        }
+        
+        .intro-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .intro-name {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .intro-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            letter-spacing: 0.5em;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(30) 0.5s 1 normal both;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .intro-hint {
+            position: absolute;
+            bottom: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: fade-pulse 2s ease-in-out infinite;
+            z-index: 2;
+        }
+        
+        @keyframes fade-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* ===== PROFESSIONAL CARDS ===== */
+        .card-pro {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-pro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .card-pro:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+            border-color: transparent;
+        }
+        
+        .card-pro:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* ===== MAGNETIC BUTTONS ===== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid #e2e8f0;
+            color: #475569;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        /* ===== GLASSMORPHISM NAVIGATION ===== */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        
+        /* ===== TECH BADGES ===== */
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #475569;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-badge:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== HERO DECORATIVE ELEMENTS ===== */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        /* ===== PROJECT ICONS ===== */
+        .project-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card-pro:hover .project-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        
+        /* ===== PROFILE IMAGE CONTAINER ===== */
+        .profile-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                width: 220px;
+                height: 220px;
+            }
+        }
+        
+        .profile-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #6366f1, #06b6d4, #6366f1);
+            animation: rotate-ring 8s linear infinite;
+        }
+        
+        @keyframes rotate-ring {
+            to { transform: rotate(360deg); }
+        }
+        
+        .profile-inner {
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* ===== CERTIFICATION CARD ===== */
+        .cert-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+            border-radius: 0 0 0 60px;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+        }
+        
+        /* ===== SECTION TITLES ===== */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        /* ===== TIMELINE ===== */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        /* ===== SOCIAL ICONS ===== */
+        .social-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress" style="width: 0%;"></div>
+
+    <!-- ===== ELEGANT INTRO SCREEN ===== -->
+    <div id="intro-screen" onclick="enterPortfolio()">
+        <div class="intro-glow"></div>
+        <div class="text-center relative z-10 px-6">
+            <h1 class="intro-name">Susheel</h1>
+            <p class="intro-subtitle">Engineer • Developer • Innovator</p>
+            <p class="intro-hint">Click anywhere to continue</p>
+        </div>
+    </div>
+
+    <!-- ===== MAIN PORTFOLIO ===== -->
+    <div id="main-portfolio" class="opacity-0 transition-opacity duration-1000">
+
+        <!-- Navigation -->
+        <nav class="nav-glass fixed w-full z-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="#" class="text-xl font-bold gradient-text tracking-tight">SK<span class="text-slate-400">.</span></a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#about" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition">About</a>
+                        <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition">Skills</a>
+                        <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition">Projects</a>
+                        <a href="#certifications" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition">Certifications</a>
+                        <a href="#contact" class="btn-primary text-sm">Get In Touch</a>
+                    </div>
+                    <button class="md:hidden text-slate-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+                    <a href="#about" class="block py-2 text-sm font-medium text-slate-600 hover:text-indigo-600">About</a>
+                    <a href="#skills" class="block py-2 text-sm font-medium text-slate-600 hover:text-indigo-600">Skills</a>
+                    <a href="#projects" class="block py-2 text-sm font-medium text-slate-600 hover:text-indigo-600">Projects</a>
+                    <a href="#certifications" class="block py-2 text-sm font-medium text-slate-600 hover:text-indigo-600">Certifications</a>
+                    <a href="#contact" class="block py-2 text-sm font-medium text-indigo-600">Get In Touch</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative overflow-hidden">
+            <!-- Decorative blobs -->
+            <div class="hero-blob w-96 h-96 bg-indigo-500 top-0 -left-20"></div>
+            <div class="hero-blob w-96 h-96 bg-cyan-500 top-40 -right-20"></div>
+            
+            <div class="flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
+                <div class="md:w-1/2 text-center md:text-left reveal">
+                    <div class="section-label mb-4">Available for Internship</div>
+                    
+                    <!-- UPDATED TITLE -->
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-slate-900 tracking-tight leading-none">
+                        Hi, I'm <span class="gradient-text">Susheel</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-600 mb-6 font-light">
+                        AI Engineer
+                    </p>
+                    <p class="text-slate-600 text-base md:text-lg mb-8 leading-relaxed max-w-xl">
+                        Computer Science student with a strong foundation in building intelligent systems. I transform complex data into actionable insights and create seamless web experiences that solve real-world problems.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <a href="#projects" class="btn-primary inline-flex items-center justify-center gap-2">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="https://github.com/kumarsusheel7497-collab" target="_blank" class="btn-secondary inline-flex items-center justify-center gap-2">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub Profile</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats (UPDATED CGPA TO 8.5) -->
+                    <div class="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-200">
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900">8.5</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider">CGPA</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900">5+</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider">Projects</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900">6+</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider">Certifications</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center reveal">
+                    <div class="profile-container">
+                        <div class="profile-ring"></div>
+                        <div class="profile-inner">
+                            <i class="fas fa-user text-7xl text-slate-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about" class="py-24 bg-white relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <div class="section-label justify-center">About Me</div>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4">My Journey So Far</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">A blend of academic excellence and practical experience in cutting-edge technologies.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="reveal">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-indigo-600"></i>
+                            </span>
+                            Education
+                        </h3>
+                        <div class="space-y-0">
+                            <!-- UPDATED CGPA TO 8.5 -->
+                            <div class="timeline-item">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-slate-900">B.Tech, Computer Science & Engineering</h4>
+                                    <span class="text-xs font-mono bg-indigo-50 text-indigo-600 px-2 py-1 rounded">2024-2028</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-1">Prathyusha Engineering College</p>
+                                <p class="text-indigo-600 font-semibold text-sm">CGPA: 8.50 / 10</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-slate-900">Senior Secondary (XII)</h4>
+                                    <span class="text-xs font-mono bg-cyan-50 text-cyan-600 px-2 py-1 rounded">2024</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-1">Narayana Junior College, AP State</p>
+                                <p class="text-cyan-600 font-semibold text-sm">Percentage: 91.00%</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-slate-900">Secondary (X)</h4>
+                                    <span class="text-xs font-mono bg-emerald-50 text-emerald-600 px-2 py-1 rounded">2022</span>
+                                </div>
+                                <p class="text-sm text-slate-600 mb-1">Sai Vikas Em School, AP State</p>
+                                <p class="text-emerald-600 font-semibold text-sm">Percentage: 90.00%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
+                                <i class="fas fa-rocket text-cyan-600"></i>
+                            </span>
+                            What I Do Best
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fas fa-brain text-indigo-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">Artificial Intelligence & ML</h4>
+                                    <p class="text-sm text-slate-600">Building predictive models and intelligent systems that solve real business problems.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-cyan-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">Data Analytics</h4>
+                                    <p class="text-sm text-slate-600">Transforming raw data into actionable insights through EDA and visualization.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                                    <i class="fas fa-cloud text-emerald-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1">Cloud & Web Development</h4>
+                                    <p class="text-sm text-slate-600">Deploying scalable applications using AWS and modern web technologies.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Extra Curricular -->
+                        <div class="mt-8 p-5 bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-xl border border-indigo-100">
+                            <h4 class="font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                                <i class="fas fa-users text-indigo-600"></i>
+                                Beyond Code
+                            </h4>
+                            <p class="text-sm text-slate-600">Active member of the Anti-Drug Club, organizing awareness campaigns and developing public speaking and outreach skills.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <div class="section-label justify-center">My Expertise</div>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4">Technical Skills</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">A comprehensive toolkit built through continuous learning and hands-on projects.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Languages & Core -->
+                    <div class="card-pro p-8 reveal">
+                        <div class="project-icon bg-indigo-100 text-indigo-600 mb-5">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Languages & Core</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">HTML/CSS</span>
+                            <span class="tech-badge">Data Structures</span>
+                            <span class="tech-badge">Algorithms</span>
+                        </div>
+                    </div>
+                    
+                    <!-- AI & Data -->
+                    <div class="card-pro p-8 reveal">
+                        <div class="project-icon bg-cyan-100 text-cyan-600 mb-5">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">AI & Data</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-badge">Artificial Intelligence</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">Data Analytics</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">NumPy</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools & Soft Skills -->
+                    <div class="card-pro p-8 reveal">
+                        <div class="project-icon bg-emerald-100 text-emerald-600 mb-5">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Tools & Soft Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-badge">AWS Cloud</span>
+                            <span class="tech-badge">Google Analytics</span>
+                            <span class="tech-badge">Git & GitHub</span>
+                            <span class="tech-badge">Public Speaking</span>
+                            <span class="tech-badge">Event Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <div class="section-label justify-center">My Work</div>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Each project represents a unique challenge solved with creativity and technical excellence.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <!-- Project 1: Medicine Reminder -->
+                    <div class="card-pro p-7 reveal">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="project-icon bg-indigo-100 text-indigo-600">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Aug 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Medicine Reminder</h3>
+                        <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+                            A user-friendly application that helps users track medication schedules with customizable dosages, reminder times, and automated notifications to reduce missed doses.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Web App</span>
+                            <span class="tech-badge">UI/UX</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://kumarsusheel7497-collab.github.io/medicine-reminder/" target="_blank" class="btn-primary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/kumarsusheel7497-collab/medicine-reminder" target="_blank" class="btn-secondary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Mental Stress Detection -->
+                    <div class="card-pro p-7 reveal">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="project-icon bg-pink-100 text-pink-600">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Aug 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Mental Stress Detection System</h3>
+                        <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+                            An ML-powered classifier that analyzes behavioral and physiological data to predict user stress levels, comparing multiple algorithms for optimal performance.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">ML</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://kumarsusheel7497-collab.github.io/mental-stress-detection/" target="_blank" class="btn-primary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/kumarsusheel7497-collab/mental-stress-detection" target="_blank" class="btn-secondary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Rainfall Prediction -->
+                    <div class="card-pro p-7 reveal">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="project-icon bg-cyan-100 text-cyan-600">
+                                <i class="fas fa-cloud-showers-heavy"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Aug 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Rainfall Prediction System</h3>
+                        <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+                            A predictive model that forecasts rainfall using historical weather data, incorporating feature engineering and EDA to enhance accuracy against real patterns.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">EDA</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://kumarsusheel7497-collab.github.io/rainfall-prediction/" target="_blank" class="btn-primary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/kumarsusheel7497-collab/rainfall-prediction" target="_blank" class="btn-secondary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Cloud Receipt Extractor -->
+                    <div class="card-pro p-7 reveal">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="project-icon bg-orange-100 text-orange-600">
+                                <i class="fas fa-receipt"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Jul 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Cloud Receipt Extractor</h3>
+                        <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+                            A cloud-powered OCR tool that automatically extracts item details, prices, dates, and totals from scanned receipts, converting unstructured data into structured output.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge">OCR</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Cloud</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://kumarsusheel7497-collab.github.io/cloud-receipt-extractor/" target="_blank" class="btn-primary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/kumarsusheel7497-collab/cloud-receipt-extractor" target="_blank" class="btn-secondary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Todo App (FEATURED) -->
+                    <div class="card-pro p-7 reveal md:col-span-2 lg:col-span-2">
+                        <div class="flex flex-col md:flex-row gap-6 items-start">
+                            <div class="flex-shrink-0">
+                                <div class="project-icon bg-emerald-100 text-emerald-600 w-14 h-14 text-2xl">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-slate-900 mb-1">Todo App - Task Manager</h3>
+                                        <p class="text-xs text-slate-500 font-mono">Aug 2026</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-xs font-semibold rounded-full">FEATURED</span>
+                                </div>
+                                <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+                                    A modern, fully-functional task management application featuring intuitive task creation, filtering, local storage persistence, and a clean responsive design. Built with focus on user experience and productivity.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-badge">JavaScript</span>
+                                    <span class="tech-badge">HTML/CSS</span>
+                                    <span class="tech-badge">LocalStorage</span>
+                                    <span class="tech-badge">Responsive</span>
+                                    <span class="tech-badge">Web App</span>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <a href="https://kumarsusheel7497-collab.github.io/todo-app/" target="_blank" class="btn-primary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                        <i class="fas fa-external-link-alt text-xs"></i>
+                                        <span>Try Live Demo</span>
+                                    </a>
+                                    <a href="https://github.com/kumarsusheel7497-collab/todo-app" target="_blank" class="btn-secondary flex-1 text-sm inline-flex items-center justify-center gap-2">
+                                        <i class="fab fa-github"></i>
+                                        <span>View Source</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- More Projects Link -->
+                <div class="text-center mt-12 reveal">
+                    <a href="https://github.com/kumarsusheel7497-collab?tab=repositories" target="_blank" class="btn-secondary inline-flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span>View All Projects on GitHub</span>
+                        <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <div class="section-label justify-center">Continuous Learning</div>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4">Certifications & Training</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Constantly upgrading my skills through industry-recognized programs.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fab fa-google text-blue-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">Google</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">AI Tools Workshop</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jul 2026 • Virtual</p>
+                    </div>
+                    
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fas fa-chart-bar text-indigo-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">Be10x</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">Data Analytics</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jul 2026 • Virtual</p>
+                    </div>
+                    
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fab fa-google text-green-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">Google Skillshop</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">Google Analytics</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jul 2026 • Virtual</p>
+                    </div>
+                    
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fas fa-robot text-purple-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">CodAlpha</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">Machine Learning</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jun-Jul 2026 • Virtual</p>
+                    </div>
+                    
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fab fa-aws text-orange-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">Coursera</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">Cloud Computing / AWS</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jun-Jul 2026 • Virtual</p>
+                    </div>
+                    
+                    <div class="cert-card reveal">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fas fa-trophy text-yellow-500"></i>
+                            <span class="text-xs font-semibold text-slate-500 uppercase">QuizVerse</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 mb-2">QuizVerse 2026</h4>
+                        <p class="text-xs text-slate-500 font-mono">Jul 2026 • Participation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="hero-blob w-96 h-96 bg-indigo-500 bottom-0 -right-20"></div>
+            <div class="hero-blob w-96 h-96 bg-cyan-500 top-20 -left-20"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="reveal">
+                    <div class="section-label justify-center">Let's Connect</div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Ready to Work Together?</h2>
+                    <p class="text-slate-600 mb-10 max-w-2xl mx-auto">
+                        I'm actively seeking internship opportunities where I can contribute my skills in Artificial Intelligence, Data Analytics, and Software Development.
+                    </p>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 gap-4 mb-10 reveal">
+                    <a href="mailto:psusheelkumar2548@gmail.com" class="card-pro p-6 text-left inline-flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-indigo-600"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider mb-1">Email Me</div>
+                            <div class="font-semibold text-slate-900 text-sm break-all">psusheelkumar2548@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="tel:+918074315296" class="card-pro p-6 text-left inline-flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone text-cyan-600"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider mb-1">Call Me</div>
+                            <div class="font-semibold text-slate-900">+91 8074315296</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex justify-center gap-4 reveal">
+                    <a href="https://github.com/kumarsusheel7497-collab" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/susheel-kumar-578a30354/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:psusheelkumar2548@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-sm mb-2">&copy; 2026 Susheel Kumar. All rights reserved.</p>
+                <p class="text-xs text-slate-500">Crafted with passion • Designed to impress</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Intro screen transition
+        function enterPortfolio() {
+            const intro = document.getElementById('intro-screen');
+            const portfolio = document.getElementById('main-portfolio');
+            
+            intro.classList.add('hidden-intro');
+            
+            setTimeout(() => {
+                portfolio.classList.remove('opacity-0');
+                portfolio.classList.add('opacity-100');
+            }, 500);
+            
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 1500);
+        }
+        
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 50);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
